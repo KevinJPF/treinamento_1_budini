@@ -69,7 +69,8 @@ class UsersList extends StatelessWidget {
                         child:
                         ElevatedButton(
                           onPressed: () {onPressedEdit(index);},
-                          style: const ButtonStyle(
+                          style: ButtonStyle(
+                              padding: MaterialStateProperty.all(EdgeInsets.zero),
                               backgroundColor: MaterialStatePropertyAll(
                               Colors.pink,
                             ),
@@ -93,6 +94,7 @@ class UsersList extends StatelessWidget {
                         ElevatedButton(
                           onPressed: () {onPressedDelete(index);},
                           style: ButtonStyle(
+                              padding: MaterialStateProperty.all(EdgeInsets.zero),
                               backgroundColor: const MaterialStatePropertyAll(
                               Colors.pink,
                             ),
