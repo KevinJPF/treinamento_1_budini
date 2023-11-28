@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:treinamento/components/custom_button.dart';
-import 'package:treinamento/components/custom_textfield.dart';
-import 'package:treinamento/components/users_list.dart';
+import 'package:treinamento/widgets/app_theme.dart';
+import 'package:treinamento/widgets/custom_button.dart';
+import 'package:treinamento/widgets/custom_textfield.dart';
+import 'package:treinamento/widgets/footer.dart';
+import 'package:treinamento/widgets/users_list.dart';
 import 'package:treinamento/database/db_connection.dart';
 
 class HomeView extends StatefulWidget {
@@ -51,40 +52,21 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Lista de Usuários'),
-          backgroundColor: Color.fromARGB(255, 28, 28, 28),
-        ),
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: Color.fromARGB(255, 28, 28, 28),
-          padding: EdgeInsets.symmetric(horizontal: 10),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                AppTheme.customColors['background-top']!,
+                AppTheme.customColors['background-bottom']!,
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
           child: Column(
             children: [
-              CustomTextField(controllerText: controllerUserName, hintText: 'Nome', isPassword: false, removeSpaces: false),
-              SizedBox(height: 10),
-              CustomTextField(controllerText: controllerAddress, hintText: 'Endereço', isPassword: false, removeSpaces: false),
-              SizedBox(height: 10),
-              CustomTextField(controllerText: controllerTelephone, hintText: 'Telefone', isPassword: false, removeSpaces: false),
-              SizedBox(height: 10),
-              CustomButton(buttonText: 'Cadastrar', 
-              onPressed: () async {
-                if (!controllerUserName.text.isEmpty) {
-                      adicionarPessoa({
-                      'user_name': controllerUserName.text, 
-                      'user_address': controllerAddress.text,
-                      'user_phone': controllerTelephone.text
-                    });
-                  }
-                  controllerUserName.clear();
-                  controllerAddress.clear();
-                  controllerTelephone.clear();
-                  carregarPessoas();
-                  String path = await database.databasePath;
-                  print('Caminho do banco de dados: $path');
-                },
-              ),
               SizedBox(height: 30),
               UsersList(
                 pessoas: pessoas, 
@@ -100,6 +82,27 @@ class _HomeViewState extends State<HomeView> {
                     carregarPessoas();
                 },
               ),
+              
+              Footer(
+                onPressed: () async {
+                  if (!controllerUserName.text.isEmpty) {
+                        adicionarPessoa({
+                        'user_name': controllerUserName.text, 
+                        'user_address': controllerAddress.text,
+                        'user_phone': controllerTelephone.text
+                      });
+                    }
+                    controllerUserName.clear();
+                    controllerAddress.clear();
+                    controllerTelephone.clear();
+                    carregarPessoas();
+                    String path = await database.databasePath;
+                    print('Caminho do banco de dados: $path');
+                  }, 
+                  controllerUserName: controllerUserName, 
+                  controllerAddress: controllerAddress, 
+                  controllerTelephone: controllerTelephone
+                ),
             ],
           ),
         ),
@@ -128,11 +131,29 @@ Future<void> _exibirPopupEdicao(BuildContext context, int index) async {
             height: MediaQuery.of(context).size.height - 700,
             child: Column(
               children: [
-                CustomTextField(controllerText: nomeController, hintText: 'Nome', isPassword: false, removeSpaces: false),
+                CustomTextField(
+                  controllerText: nomeController, 
+                  hintText: 'nome', 
+                  titleText: 'nome',
+                  isPassword: false, 
+                  removeSpaces: false
+                  ),
                 const SizedBox(height: 10),
-                CustomTextField(controllerText: enderecoController, hintText: 'Endereço', isPassword: false, removeSpaces: false),
+                CustomTextField(
+                  controllerText: enderecoController, 
+                  hintText: 'enreco', 
+                  titleText: 'endereço',
+                  isPassword: false, 
+                  removeSpaces: false
+                  ),
                 const SizedBox(height: 10),
-                CustomTextField(controllerText: telefoneController, hintText: 'Telefone', isPassword: false, removeSpaces: false),
+                CustomTextField(
+                  controllerText: telefoneController, 
+                  hintText: '', 
+                  titleText: 'telefone',
+                  isPassword: false, 
+                  removeSpaces: false
+                  ),
               ],
             ),
           ),
