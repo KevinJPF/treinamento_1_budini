@@ -4,54 +4,77 @@ import 'package:treinamento/widgets/app_theme.dart';
 class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String buttonText;
-  final Color backgroundColor;
-  final TextStyle textStyle;
-  final double borderSize;
-  final Color borderColor;
+  final double buttonHeight;
+  final double buttonBorderRadius;
+  final TextStyle buttonTextStyle;
+  final double buttonMarginTop;
+  final double buttonMarginBottom;
+  final double buttonMarginLeft;
+  final double buttonMarginRight;
+  final Color buttonBackColor;
+  final double buttonBorderWidth;
+  final Color buttonBorderColor;
+
   const CustomButton(
-      {super.key, required this.buttonText, required this.onPressed, required this.backgroundColor, required this.textStyle, required this.borderSize, required this.borderColor});
+      {super.key, 
+      required this.buttonText, 
+      required this.onPressed,
+      required this.buttonHeight, 
+      required this.buttonBorderRadius, 
+      required this.buttonTextStyle, 
+      required this.buttonMarginTop, 
+      required this.buttonMarginBottom, 
+      required this.buttonMarginLeft, 
+      required this.buttonMarginRight, 
+      required this.buttonBackColor, 
+      required this.buttonBorderWidth, 
+      required this.buttonBorderColor}
+    );
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 48,
-      margin: EdgeInsets.only(left: 16, right: 16, top: 16  , bottom: 24),
-      decoration: BoxDecoration (
-        boxShadow: [
-          BoxShadow(
-            color: AppTheme.customColors['black-16']!,
-            offset: Offset(0, 4),
-            blurRadius: 8,
+    return Column(
+      children: [
+        Container(
+          width: double.infinity,
+          height: buttonHeight,
+          margin: EdgeInsets.only(left: buttonMarginLeft, right: buttonMarginRight, top: buttonMarginTop  , bottom: buttonMarginBottom),
+          decoration: BoxDecoration (
+            borderRadius: BorderRadius.circular(buttonBorderRadius),
+            boxShadow: [
+              BoxShadow(
+                color: AppTheme.customColors['black-16']!,
+                offset: Offset(0, 4),
+                blurRadius: 8,
+              ),
+            ],
           ),
-        ],
-      ),
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ButtonStyle(
-          side: MaterialStateProperty.all<BorderSide>(
-            BorderSide(
-              color: borderColor,
-              width: borderSize,
+          child: ElevatedButton(
+            onPressed: onPressed,
+            style: ButtonStyle(
+              side: MaterialStateProperty.all<BorderSide>(
+                BorderSide(
+                  color: buttonBorderColor!,
+                  width: buttonBorderWidth,
+                ),
+              ),
+              elevation: MaterialStateProperty.all<double>(0),
+              backgroundColor: MaterialStatePropertyAll(
+                buttonBackColor,
+              ),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(buttonBorderRadius),
+                ),
+              ),
             ),
-          ),
-          elevation: MaterialStateProperty.all<double>(0),
-          minimumSize: MaterialStateProperty.all(
-              Size(10, 50)),
-          backgroundColor: MaterialStatePropertyAll(
-            backgroundColor,
-          ),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(24),
+            child: Text(
+              buttonText,
+              style: buttonTextStyle,
             ),
           ),
         ),
-        child: Text(
-          buttonText,
-          style: textStyle,
-        ),
-      ),
+      ],
     );
   }
 }

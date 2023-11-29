@@ -11,6 +11,7 @@ import 'package:treinamento/widgets/footer.dart';
 import 'package:treinamento/widgets/header.dart';
 import 'package:treinamento/widgets/remove_popup.dart';
 import 'package:treinamento/widgets/subheader.dart';
+import 'package:treinamento/widgets/truck_tires.dart';
 import 'package:treinamento/widgets/users_list.dart';
 import 'package:treinamento/database/db_connection.dart';
 
@@ -56,16 +57,24 @@ class _HomeViewState extends State<HomeView> {
 
               CentralizedText(text: 'Para determinar um padrão de inspeção, selecione a posição inicial e rotação no veículo modelo.'),
 
+              TruckTires(),
+
               Spacer(),
 
               CustomButton(
                 buttonText: 'Aplicar', 
                 onPressed: () {},
-                backgroundColor: AppTheme.customColors['principal-100']!,
-                textStyle: AppTheme.customTextStyles['medium-18']!,
-                borderSize: 0,
-                borderColor: Colors.transparent,
-                ),
+                buttonHeight: 48,
+                buttonTextStyle: AppTheme.customTextStyles['medium-18']!,
+                buttonBackColor: AppTheme.customColors['principal-100']!,
+                buttonBorderWidth: 0,
+                buttonBorderColor: AppTheme.customColors['principal-100']!,
+                buttonBorderRadius: 200,
+                buttonMarginBottom: 24,
+                buttonMarginTop: 16,
+                buttonMarginLeft: 16,
+                buttonMarginRight: 16,
+              ),
 
             ],
           ),
