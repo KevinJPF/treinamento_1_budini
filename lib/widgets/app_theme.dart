@@ -24,7 +24,9 @@ class AppTheme {
     'black-100':const Color(0xFF000000),
     'black-80': const Color(0xCC000000),
     'black-54': const Color(0x8A000000),
+    'black-28': const Color(0x47000000),
     'black-24': const Color(0x3D000000),
+    'black-16': const Color(0x29000000),
     'black-12': const Color(0x1F000000),
 
     'dark-blue-100':const Color(0xFF2D3442),

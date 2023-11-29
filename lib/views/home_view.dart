@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:treinamento/widgets/app_theme.dart';
+import 'package:treinamento/widgets/centralized_text.dart';
 import 'package:treinamento/widgets/switch.dart';
 import 'package:treinamento/widgets/custom_button.dart';
 import 'package:treinamento/widgets/custom_textfield.dart';
@@ -18,6 +19,7 @@ class HomeView extends StatefulWidget {
 
   @override
   State<HomeView> createState() => _HomeViewState();
+  
 }
 
 class _HomeViewState extends State<HomeView> {
@@ -50,11 +52,20 @@ class _HomeViewState extends State<HomeView> {
                 rightIcon: null,
               ),
 
-              SwitchCustom(
-                text: 'Alterar sequência de inspeção',
-              ),
+              SwitchCustom(text: 'Alterar sequência de inspeção'),
 
-              
+              CentralizedText(text: 'Para determinar um padrão de inspeção, selecione a posição inicial e rotação no veículo modelo.'),
+
+              Spacer(),
+
+              CustomButton(
+                buttonText: 'Aplicar', 
+                onPressed: () {},
+                backgroundColor: AppTheme.customColors['principal-100']!,
+                textStyle: AppTheme.customTextStyles['medium-18']!,
+                borderSize: 0,
+                borderColor: Colors.transparent,
+                ),
 
             ],
           ),

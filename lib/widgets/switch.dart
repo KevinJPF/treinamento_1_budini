@@ -8,7 +8,7 @@ class SwitchCustom extends StatefulWidget {
 
 
   @override
-  State<SwitchCustom> createState() => _SwitchCustomState();
+  _SwitchCustomState createState() => _SwitchCustomState();
 }
 
 class _SwitchCustomState extends State<SwitchCustom> {
@@ -41,7 +41,7 @@ class _SwitchCustomState extends State<SwitchCustom> {
           ),
           Container (
             width: (55),
-            height: 26,
+            height: 30,
             // color: Colors.green,
             child: AnimatedSwitcher(
             duration: Duration(milliseconds: 500),
@@ -65,10 +65,18 @@ class _SwitchCustomState extends State<SwitchCustom> {
                   alignment: isSwitched ? Alignment.centerRight : Alignment.centerLeft,
                   padding: EdgeInsets.zero,
                   child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(50),
-                  ),
+                    margin: EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                      color: AppTheme.customColors['white-100'],
+                      borderRadius: BorderRadius.circular(13),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppTheme.customColors['black-28']!,
+                          offset: Offset(0, 5),
+                          blurRadius: 10,
+                        ),
+                      ],
+                    ),
                     height: 26,
                     width: 26,
                   ),
@@ -79,5 +87,9 @@ class _SwitchCustomState extends State<SwitchCustom> {
         ],
       ),
     );
+  }
+  
+  bool getSwitchedState() {
+    return isSwitched;
   }
 }
