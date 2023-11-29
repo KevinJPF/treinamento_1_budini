@@ -6,6 +6,9 @@ class AppTheme {
     'background-top': const Color(0xFF0A2430),
     'background-bottom': const Color(0xFF05455E),
 
+    'activated-switch': const Color(0xFF27F3ED),
+    'deactivated-switch': const Color(0x42000000),
+
     'principal-100': const Color(0xFF27F3ED),
     'principal-80': const Color(0xCC27F3ED),
     'principal-54': const Color(0x8A27F3ED),
@@ -17,6 +20,12 @@ class AppTheme {
     'white-54': const Color(0x8AFFFFFF),
     'white-24': const Color(0x3DFFFFFF),
     'white-12': const Color(0x1FFFFFFF),
+
+    'black-100':const Color(0xFF000000),
+    'black-80': const Color(0xCC000000),
+    'black-54': const Color(0x8A000000),
+    'black-24': const Color(0x3D000000),
+    'black-12': const Color(0x1F000000),
 
     'dark-blue-100':const Color(0xFF2D3442),
     'dark-blue-80': const Color(0xCC2D3442),

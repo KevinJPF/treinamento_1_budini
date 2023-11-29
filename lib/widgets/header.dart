@@ -1,13 +1,15 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:treinamento/widgets/app_theme.dart';
 
 class Header extends StatelessWidget {
-  final int totalResultados;
-  
-  const Header({super.key, required this.totalResultados});
+  final String tituloHeader;
+  final bool hasLeftIcon;
+  final IconData? leftIcon;
+  final bool hasRightIcon;
+  final IconData? rightIcon;
+
+
+  const Header({super.key, required this.tituloHeader, required this.hasLeftIcon, this.leftIcon, required this.hasRightIcon, this.rightIcon});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class Header extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: statusBarHeight),
       width: MediaQuery.of(context).size.width,
-      height: 104,
+      height: 56,
       // color: Colors.yellow,
       child: Column(
             children: [
@@ -51,7 +53,7 @@ class Header extends StatelessWidget {
                           Size(48, 48)),
                         ),
                         child: Icon(
-                            CupertinoIcons.xmark,
+                            leftIcon,
                             color: AppTheme.customColors['white-100'],
                             size: 24,
                           ),
@@ -64,17 +66,17 @@ class Header extends StatelessWidget {
                       alignment: Alignment.center,
                       // color: Colors.orange,
                       child: Text(
-                        'Pessoas',
+                        tituloHeader,
                         style: AppTheme.customTextStyles['medium-20'],
                       ),
                     ),
                     Spacer(),
                     Container(
                       height: 48,
-                      width: 48,
+                      width: hasRightIcon ? 48 : 0,
                       alignment: Alignment.centerRight,
                       margin: EdgeInsets.only(top: 4),
-                      // color: Colors.orange,
+                      color: Colors.orange,
                       child:
                       ElevatedButton(
                         onPressed: () {},
@@ -93,7 +95,7 @@ class Header extends StatelessWidget {
                           Size(48, 48)),
                         ),
                         child: Icon(
-                            CupertinoIcons.check_mark,
+                            rightIcon,
                             color: AppTheme.customColors['white-100'],
                             size: 24,
                           ),
@@ -102,88 +104,7 @@ class Header extends StatelessWidget {
                   ]
                 ),
               ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 48,
-                padding: EdgeInsets.only(left: 16, bottom: 4, top: 8),
-                // color: Colors.grey,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Stack(
-                        children: [
-                          Container(
-                            alignment: Alignment.bottomLeft,
-                            margin: EdgeInsets.only(right: 16),
-                            // color: Colors.blue,
-                            child: Text(
-                              'NOME',
-                              style: AppTheme.customTextStyles['regular-11-highlight'],
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              DateFormat('dd/MM/yyyy').format(DateTime.now()),
-                              style: AppTheme.customTextStyles['regular-11'],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        alignment: Alignment.bottomLeft,
-                        margin: EdgeInsets.only(right: 16),
-                        // color: Colors.blue,
-                        child: Text(
-                          'ENDEREÇO',
-                          style: AppTheme.customTextStyles['regular-11-highlight'],
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        // color: Colors.lightBlue,
-                        child: Align(
-                          alignment: Alignment.bottomLeft,
-                          child: Text(
-                            'TELEFONE',
-                            style: AppTheme.customTextStyles['regular-11-highlight'],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 4),
-                      width: 96,
-                      height: 48,
-                      // color: Colors.green[900],
-                      child: Stack(
-                        children: [
-                          Container(
-                            alignment: Alignment.bottomRight,
-                            margin: EdgeInsets.only(right: 16),
-                            // color: Colors.blue,
-                            child: Text(
-                              '${totalResultados}',
-                              style: AppTheme.customTextStyles['regular-11-highlight'],
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.topRight,
-                            margin: EdgeInsets.only(right: 16),
-                            child: Text(
-                              'total',
-                              style: AppTheme.customTextStyles['regular-11'],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ]
-                ),
-              ),
+              
           ],
         ),
     );

@@ -115,11 +115,11 @@ class _UsersListState extends State<UsersList> {
                                       height: 48,
                                       child:
                                       ElevatedButton(
-                                        onPressed: () {
+                                          onPressed: () {
                                             selectedIndex = index;
                                             widget.onPressedEdit(index);
                                           },
-                                        style: ButtonStyle(
+                                          style: ButtonStyle(
                                             elevation: MaterialStateProperty.all<double>(0),
                                             padding: MaterialStateProperty.all(EdgeInsets.zero),
                                             backgroundColor: const MaterialStatePropertyAll(
