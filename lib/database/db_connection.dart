@@ -20,7 +20,7 @@ class DatabaseConnection {
       version: 1, // Versão do seu banco de dados
       onCreate: (db, version) {
         db.execute(
-          'CREATE TABLE Users(id_user INTEGER PRIMARY KEY, user_name TEXT, user_address TEXT, user_phone TEXT)',
+          'CREATE TABLE Users(id_user INTEGER PRIMARY KEY, user_name TEXT, user_address TEXT, user_phone TEXT, date_time TEXT)',
         );
       },
     );

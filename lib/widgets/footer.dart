@@ -29,7 +29,7 @@ class Footer extends StatelessWidget {
               CustomTextField(
                 controllerText: controllerUserName, 
                 hintText: '', 
-                titleText: 'nome',
+                titleText: 'Nome',
                 isPassword: false, 
                 removeSpaces: false
               ),
@@ -37,7 +37,7 @@ class Footer extends StatelessWidget {
               CustomTextField(
                 controllerText: controllerAddress, 
                 hintText: '', 
-                titleText: 'endereço',
+                titleText: 'Endereço',
                 isPassword: false, 
                 removeSpaces: false
               ),
@@ -49,7 +49,7 @@ class Footer extends StatelessWidget {
               CustomTextField(
                 controllerText: controllerTelephone, 
                 hintText: '', 
-                titleText: 'telefone',
+                titleText: 'Telefone',
                 isPassword: false, 
                 removeSpaces: false
                 ),
@@ -58,7 +58,7 @@ class Footer extends StatelessWidget {
                 child: Container(
                   height: 66,
                   alignment: Alignment.bottomCenter,
-                  child: CustomButton(buttonText: 'adicionar', 
+                  child: CustomButton(buttonText: 'Adicionar', 
                   onPressed: onPressed,
                   ),
                 ),

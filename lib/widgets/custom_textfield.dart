@@ -19,12 +19,6 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        // width: MediaQuery.of(context).size.width,
-        // height: 70,
-        decoration: BoxDecoration(
-          color: Colors.white, // Cor de fundo
-          borderRadius: BorderRadius.circular(8), // Border radius
-        ),
         child: Column(
           children: [
             Container(
@@ -37,6 +31,10 @@ class CustomTextField extends StatelessWidget {
             ),
             Container(
               height: 48,
+        decoration: BoxDecoration(
+              color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+        ),
               child: TextField(
                 controller: controllerText,
                 decoration: InputDecoration(

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:treinamento/widgets/app_theme.dart';
 import 'package:treinamento/widgets/custom_button.dart';
 import 'package:treinamento/widgets/custom_textfield.dart';
+import 'package:treinamento/widgets/edit_person.dart';
 import 'package:treinamento/widgets/footer.dart';
+import 'package:treinamento/widgets/header.dart';
+import 'package:treinamento/widgets/remove_popup.dart';
 import 'package:treinamento/widgets/users_list.dart';
 import 'package:treinamento/database/db_connection.dart';
 
@@ -30,7 +34,7 @@ class _HomeViewState extends State<HomeView> {
   void carregarPessoas() {
     database.getUsuarios().then((result) {
       setState(() {
-        pessoas = result;
+        pessoas = result.reversed.toList();
         print('resultado: ${result}');
         print('pessoas: ${pessoas}');
       });
@@ -40,12 +44,6 @@ class _HomeViewState extends State<HomeView> {
   void adicionarPessoa(Map<String, dynamic> novaPessoa) {
     setState(() {
       database.insertItem(novaPessoa);
-    });
-  }
-  
-  void removerPessoa(int indexPessoa) {
-    setState(() {
-      database.deleteItem(indexPessoa);
     });
   }
 
@@ -67,18 +65,19 @@ class _HomeViewState extends State<HomeView> {
           ),
           child: Column(
             children: [
-              SizedBox(height: 30),
+              Header(totalResultados: pessoas.length,),
+
               UsersList(
                 pessoas: pessoas, 
                 onPressedEdit: (int index) async {
-                    print('id_user: ${pessoas[index]['id_user']}');
-                    await _exibirPopupEdicao(context, index);
+                    //print('user: ${pessoas[index]}');
+                    await EditPerson(context, pessoas[index]);
                     carregarPessoas();
                 },
-                onPressedDelete: (int index) {
+                onPressedDelete: (int index) async {
                     print('pessoa: ${pessoas[index]}');
                     print('id_user: ${pessoas[index]['id_user']}');
-                    removerPessoa(pessoas[index]['id_user']);
+                    await RemovePopup(context, pessoas[index]['id_user'], pessoas[index]['user_name']);
                     carregarPessoas();
                 },
               ),
@@ -89,7 +88,8 @@ class _HomeViewState extends State<HomeView> {
                         adicionarPessoa({
                         'user_name': controllerUserName.text, 
                         'user_address': controllerAddress.text,
-                        'user_phone': controllerTelephone.text
+                        'user_phone': controllerTelephone.text,
+                        'date_time': DateFormat('HH:mm').format(DateTime.now()),
                       });
                     }
                     controllerUserName.clear();
@@ -106,83 +106,6 @@ class _HomeViewState extends State<HomeView> {
             ],
           ),
         ),
-    );
-  }
-
-Future<void> _exibirPopupEdicao(BuildContext context, int index) async {
-    TextEditingController nomeController = TextEditingController();
-    TextEditingController enderecoController = TextEditingController();
-    TextEditingController telefoneController = TextEditingController();
-
-
-    final int idUser = pessoas[index]['id_user'];
-    nomeController.text = pessoas[index]['user_name'];
-    enderecoController.text = pessoas[index]['user_address'];
-    telefoneController.text = pessoas[index]['user_phone'];
-
-    await showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Center(child: Text('Editar Usuário')),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          content: SizedBox(
-            width: MediaQuery.of(context).size.width - 100,
-            height: MediaQuery.of(context).size.height - 700,
-            child: Column(
-              children: [
-                CustomTextField(
-                  controllerText: nomeController, 
-                  hintText: 'nome', 
-                  titleText: 'nome',
-                  isPassword: false, 
-                  removeSpaces: false
-                  ),
-                const SizedBox(height: 10),
-                CustomTextField(
-                  controllerText: enderecoController, 
-                  hintText: 'enreco', 
-                  titleText: 'endereço',
-                  isPassword: false, 
-                  removeSpaces: false
-                  ),
-                const SizedBox(height: 10),
-                CustomTextField(
-                  controllerText: telefoneController, 
-                  hintText: '', 
-                  titleText: 'telefone',
-                  isPassword: false, 
-                  removeSpaces: false
-                  ),
-              ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Cancelar'),
-            ),
-            TextButton(
-              onPressed: () {
-                // Atualize os valores no item da lista
-                setState(() {
-                  final Map<String, dynamic> pessoaAtualizada = 
-                    {'id_user': idUser, 'user_name': nomeController.text, 'user_address': enderecoController.text, 'user_phone': telefoneController.text,};
-                    print(pessoaAtualizada);
-                  database.updateItem(pessoaAtualizada);
-                  // pessoas[index]['user_name'] = nomeController.text;
-                  // pessoas[index]['user_address'] = enderecoController.text;
-                  // pessoas[index]['user_phone'] = telefoneController.text;
-                });
-                Navigator.pop(context);
-              },
-              child: const Text('Confirmar'),
-            ),
-          ],
-        );
-      },
     );
   }
 }

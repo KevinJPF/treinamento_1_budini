@@ -68,6 +68,18 @@ class AppTheme {
       fontWeight: FontWeight.w600,
       color: customColors['dark-blue-100']!,
     ),
+    'medium-16': TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 16.0,
+      fontWeight: FontWeight.w600,
+      color: customColors['white-100']!,
+    ),
+    'medium-16-highlight': TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 16.0,
+      fontWeight: FontWeight.w600,
+      color: customColors['principal-100']!,
+    ),
     'medium-14': TextStyle(
       fontFamily: 'Poppins',
       fontSize: 14.0,
@@ -79,6 +91,12 @@ class AppTheme {
       fontSize: 11.0,
       fontWeight: FontWeight.w400,
       color: customColors['white-54']!,
+    ),
+    'regular-11-highlight': TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 11.0,
+      fontWeight: FontWeight.w400,
+      color: customColors['principal-100']!,
     ),
     'regular-24': TextStyle(
       fontFamily: 'Poppins',
@@ -98,7 +116,7 @@ class AppTheme {
       fontWeight: FontWeight.w400,
       color: customColors['principal-100']!,
     ),
-    
+
     'regular-14': TextStyle(
       fontFamily: 'Poppins',
       fontSize: 14.0,

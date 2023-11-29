@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:treinamento/widgets/app_theme.dart';
 import 'views/home_view.dart';
 
 main() {
+  // debugPaintSizeEnabled = true;
   runApp(AppWidget());
 }
 
