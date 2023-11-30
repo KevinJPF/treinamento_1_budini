@@ -76,7 +76,9 @@ class _HomeViewState extends State<HomeView> {
 
               CustomButton(
                 buttonText: 'Aplicar', 
-                onPressed: () {},
+                onPressed: () {
+                  if (visibleComponents) RemovePopup(context);
+                },
                 buttonHeight: 48,
                 buttonTextStyle: AppTheme.customTextStyles['medium-18']!,
                 buttonBackColor: AppTheme.customColors['principal-100']!,
