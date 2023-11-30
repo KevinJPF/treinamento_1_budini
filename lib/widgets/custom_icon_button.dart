@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:treinamento/widgets/app_theme.dart';
 
-class CustomButton extends StatelessWidget {
+class CustomIconButton extends StatelessWidget {
   final VoidCallback onPressed;
-  final String buttonText;
   final double buttonHeight;
-  final double buttonBorderRadius;
-  final TextStyle buttonTextStyle;
+  final IconData? buttonIcon;
+  final Color buttonIconColor;
+  final double buttonIconSize;
   final double buttonMarginTop;
   final double buttonMarginBottom;
   final double buttonMarginLeft;
@@ -14,21 +14,27 @@ class CustomButton extends StatelessWidget {
   final Color buttonBackColor;
   final double buttonBorderWidth;
   final Color buttonBorderColor;
+  final double buttonTopLeftRadius;
+  final double buttonTopRightRadius;
+  final double buttonBottomLeftRadius;
+  final double buttonBottomRightRadius;
 
-  const CustomButton(
+  const CustomIconButton(
       {super.key, 
-      required this.buttonText, 
       required this.onPressed,
       required this.buttonHeight, 
-      required this.buttonBorderRadius, 
-      required this.buttonTextStyle, 
       required this.buttonMarginTop, 
       required this.buttonMarginBottom, 
       required this.buttonMarginLeft, 
       required this.buttonMarginRight, 
       required this.buttonBackColor, 
       required this.buttonBorderWidth, 
-      required this.buttonBorderColor}
+      required this.buttonBorderColor, 
+      this.buttonIcon, 
+      required this.buttonTopLeftRadius, 
+      required this.buttonTopRightRadius, 
+      required this.buttonBottomLeftRadius, 
+      required this.buttonBottomRightRadius, required this.buttonIconColor, required this.buttonIconSize}
     );
 
   @override
@@ -40,7 +46,12 @@ class CustomButton extends StatelessWidget {
           height: buttonHeight,
           margin: EdgeInsets.only(left: buttonMarginLeft, right: buttonMarginRight, top: buttonMarginTop  , bottom: buttonMarginBottom),
           decoration: BoxDecoration (
-            borderRadius: BorderRadius.circular(buttonBorderRadius),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(buttonTopLeftRadius),
+              topRight: Radius.circular(buttonTopRightRadius),
+              bottomLeft: Radius.circular(buttonBottomLeftRadius),
+              bottomRight: Radius.circular(buttonBottomRightRadius),
+              ),
             boxShadow: [
               BoxShadow(
                 color: AppTheme.customColors['black-16']!,
@@ -55,7 +66,7 @@ class CustomButton extends StatelessWidget {
               padding: MaterialStateProperty.all(EdgeInsets.zero),
               side: MaterialStateProperty.all<BorderSide>(
                 BorderSide(
-                  color: buttonBorderColor!,
+                  color: buttonBorderColor,
                   width: buttonBorderWidth,
                 ),
               ),
@@ -65,13 +76,19 @@ class CustomButton extends StatelessWidget {
               ),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(buttonBorderRadius),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(buttonTopLeftRadius),
+                  topRight: Radius.circular(buttonTopRightRadius),
+                  bottomLeft: Radius.circular(buttonBottomLeftRadius),
+                  bottomRight: Radius.circular(buttonBottomRightRadius),
+                  ),
                 ),
               ),
-            ),
-            child: Text(
-              buttonText,
-              style: buttonTextStyle,
+            ), 
+            child: Icon(
+              buttonIcon,
+              color: buttonIconColor,
+              size: buttonIconSize,
             ),
           ),
         ),

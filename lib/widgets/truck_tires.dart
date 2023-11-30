@@ -2,9 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:treinamento/widgets/app_theme.dart';
 import 'package:treinamento/widgets/custom_button.dart';
+import 'package:treinamento/widgets/custom_icon_button.dart';
 
-class TruckTires extends StatelessWidget {
+class TruckTires extends StatefulWidget {
+
   const TruckTires({super.key});
+
+  @override
+  State<TruckTires> createState() => _TruckTiresState();
+}
+
+class _TruckTiresState extends State<TruckTires> {
+  final Map<String, dynamic> customButtonProperties = {
+    'activated-back-color': AppTheme.customColors['principal-100']!,
+    'deactivated-back-color': AppTheme.customColors['black-54']!,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -58,10 +70,10 @@ class TruckTires extends StatelessWidget {
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: CustomButton(
-                    buttonText: '1', 
+                    buttonText: '4', 
                     onPressed: () {},
                     buttonHeight: 22,
-                    buttonTextStyle: AppTheme.customTextStyles['regular-6']!,
+                    buttonTextStyle: AppTheme.customTextStyles['medium-14']!,
                     buttonBackColor: AppTheme.customColors['black-54']!,
                     buttonBorderWidth: 0,
                     buttonBorderColor: Colors.transparent!,
@@ -110,7 +122,7 @@ class TruckTires extends StatelessWidget {
                     buttonText: '1', 
                     onPressed: () {},
                     buttonHeight: 22,
-                    buttonTextStyle: AppTheme.customTextStyles['regular-6']!,
+                    buttonTextStyle: AppTheme.customTextStyles['medium-14-blue']!,
                     buttonBackColor: AppTheme.customColors['principal-100']!,
                     buttonBorderWidth: 0,
                     buttonBorderColor: AppTheme.customColors['principal-100']!,
@@ -186,10 +198,10 @@ class TruckTires extends StatelessWidget {
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: CustomButton(
-                    buttonText: '1', 
+                    buttonText: '3', 
                     onPressed: () {},
                     buttonHeight: 22,
-                    buttonTextStyle: AppTheme.customTextStyles['regular-6']!,
+                    buttonTextStyle: AppTheme.customTextStyles['medium-14']!,
                     buttonBackColor: AppTheme.customColors['black-54']!,
                     buttonBorderWidth: 0,
                     buttonBorderColor: Colors.transparent,
@@ -221,10 +233,10 @@ class TruckTires extends StatelessWidget {
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: CustomButton(
-                    buttonText: '1', 
+                    buttonText: '2', 
                     onPressed: () {},
                     buttonHeight: 22,
-                    buttonTextStyle: AppTheme.customTextStyles['regular-6']!,
+                    buttonTextStyle: AppTheme.customTextStyles['medium-14']!,
                     buttonBackColor: AppTheme.customColors['black-54']!,
                     buttonBorderWidth: 0,
                     buttonBorderColor: Colors.transparent,
@@ -297,61 +309,51 @@ class TruckTires extends StatelessWidget {
                 SizedBox(width: 50),
                 Row(
                   children: [
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Container(
-                          width: 30,
-                          height: 30,
-                          child: CustomButton(
-                            buttonText: '', 
-                            onPressed: () {},
-                            buttonHeight: 30,
-                            buttonTextStyle: AppTheme.customTextStyles['medium-14']!,
-                            buttonBackColor: AppTheme.customColors['principal-100']!,
-                            buttonBorderWidth: 0,
-                            buttonBorderColor: Colors.transparent,
-                            buttonBorderRadius: 4,
-                            buttonMarginBottom: 0,
-                            buttonMarginTop: 0,
-                            buttonMarginLeft: 0,
-                            buttonMarginRight: 0,
-                          ),
-                        ),
-                        Icon(
-                          CupertinoIcons.arrow_counterclockwise,
-                          color: AppTheme.customColors['black-100'],
-                          size: 25,
-                        ),
-                      ],
+                    Container(
+                      width: 30,
+                      height: 30,
+                      child: 
+                      CustomIconButton(
+                        onPressed: () {}, 
+                        buttonHeight: 30, 
+                        buttonMarginTop: 0, 
+                        buttonMarginBottom: 0, 
+                        buttonMarginLeft: 0, 
+                        buttonMarginRight: 0, 
+                        buttonBackColor: AppTheme.customColors['white-12']!, 
+                        buttonBorderWidth: 0, 
+                        buttonBorderColor: Colors.transparent, 
+                        buttonTopLeftRadius: 4, 
+                        buttonTopRightRadius: 0, 
+                        buttonBottomLeftRadius: 4, 
+                        buttonBottomRightRadius: 0,
+                        buttonIcon: CupertinoIcons.arrow_counterclockwise,
+                        buttonIconColor: AppTheme.customColors['white-24']!,
+                        buttonIconSize: 25,
+                      ),
                     ),
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Container(
-                          width: 30,
-                          height: 30,
-                          child: CustomButton(
-                            buttonText: '', 
-                            onPressed: () {},
-                            buttonHeight: 30,
-                            buttonTextStyle: AppTheme.customTextStyles['medium-14']!,
-                            buttonBackColor: AppTheme.customColors['white-54']!,
-                            buttonBorderWidth: 0,
-                            buttonBorderColor: Colors.transparent,
-                            buttonBorderRadius: 4,
-                            buttonMarginBottom: 0,
-                            buttonMarginTop: 0,
-                            buttonMarginLeft: 0,
-                            buttonMarginRight: 0,
-                          ),
-                        ),
-                        Icon(
-                          CupertinoIcons.arrow_clockwise,
-                          color: AppTheme.customColors['black-100'],
-                          size: 25,
-                        ),
-                      ],
+                    Container(
+                      width: 30,
+                      height: 30,
+                      child: 
+                      CustomIconButton(
+                        onPressed: () {}, 
+                        buttonHeight: 30, 
+                        buttonMarginTop: 0, 
+                        buttonMarginBottom: 0, 
+                        buttonMarginLeft: 0, 
+                        buttonMarginRight: 0, 
+                        buttonBackColor: AppTheme.customColors['principal-100']!, 
+                        buttonBorderWidth: 0, 
+                        buttonBorderColor: Colors.transparent, 
+                        buttonTopLeftRadius: 0, 
+                        buttonTopRightRadius: 4, 
+                        buttonBottomLeftRadius: 0, 
+                        buttonBottomRightRadius: 4,
+                        buttonIcon: CupertinoIcons.arrow_clockwise,
+                        buttonIconColor: AppTheme.customColors['dark-blue-100']!,
+                        buttonIconSize: 25,
+                      ),
                     ),
                   ],
                 )

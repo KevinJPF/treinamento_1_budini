@@ -24,7 +24,6 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  bool _isSwitched = false;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +44,7 @@ class _HomeViewState extends State<HomeView> {
           child: Column(
             children: [
 
-              Header(
+              const Header(
                 tituloHeader: 'Sequência de Inspeção[63]',
                 hasLeftIcon: true,
                 leftIcon: CupertinoIcons.arrow_left,
@@ -53,13 +52,13 @@ class _HomeViewState extends State<HomeView> {
                 rightIcon: null,
               ),
 
-              SwitchCustom(text: 'Alterar sequência de inspeção'),
+              const SwitchCustom(text: 'Alterar sequência de inspeção'),
 
-              CentralizedText(text: 'Para determinar um padrão de inspeção, selecione a posição inicial e rotação no veículo modelo.'),
+              const CentralizedText(text: 'Para determinar um padrão de inspeção, selecione a posição inicial e rotação no veículo modelo.'),
 
-              TruckTires(),
+              const TruckTires(),
 
-              Spacer(),
+              const Spacer(),
 
               CustomButton(
                 buttonText: 'Aplicar', 
