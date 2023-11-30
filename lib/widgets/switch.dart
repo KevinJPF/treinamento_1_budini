@@ -57,7 +57,7 @@ class _SwitchCustomState extends State<SwitchCustom> {
                   onPressed: () {
                     setState(() {
                       isSwitched = !isSwitched;
-                      print(isSwitched);
+                      print('isSwitched: $isSwitched');
                       widget.onPressed();
                     });
                   },

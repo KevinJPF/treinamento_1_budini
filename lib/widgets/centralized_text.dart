@@ -3,8 +3,9 @@ import 'package:treinamento/widgets/app_theme.dart';
 
 class CentralizedText extends StatelessWidget {
   final String text;
+  final TextStyle styleText;
 
-  const CentralizedText({super.key, required this.text});
+  const CentralizedText({super.key, required this.text, required this.styleText});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class CentralizedText extends StatelessWidget {
           child: Text (
             text, 
             textAlign: TextAlign.center,
-            style: AppTheme.customTextStyles['medium-16']
+            style: styleText
           ),
         ),
       ),

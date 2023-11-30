@@ -11,6 +11,8 @@ import 'package:treinamento/widgets/footer.dart';
 import 'package:treinamento/widgets/header.dart';
 import 'package:treinamento/widgets/remove_popup.dart';
 import 'package:treinamento/widgets/subheader.dart';
+import 'package:treinamento/widgets/tire_settings.dart';
+import 'package:treinamento/widgets/title_text.dart';
 import 'package:treinamento/widgets/truck_tires.dart';
 import 'package:treinamento/widgets/users_list.dart';
 import 'package:treinamento/database/db_connection.dart';
@@ -53,29 +55,28 @@ class _HomeViewState extends State<HomeView> {
             children: [
 
               const Header(
-                tituloHeader: 'Sequência de Inspeção[63]',
+                tituloHeader: 'Inspection P&D[62]',
                 hasLeftIcon: true,
-                leftIcon: CupertinoIcons.arrow_left,
-                hasRightIcon: false,
-                rightIcon: null,
+                leftIcon: CupertinoIcons.xmark,
+                hasRightIcon: true,
+                rightIcon: CupertinoIcons.gear_solid,
               ),
 
-              SwitchCustom(text: 'Alterar sequência de inspeção', onPressed: componentsVisibility,),
+              TitleText(titleText: 'Settings', titleStyle: AppTheme.customTextStyles['regular-24-highlight']!),
 
-              Visibility(
-                visible: visibleComponents,
-                child: const CentralizedText(text: 'Para determinar um padrão de inspeção, selecione a posição inicial e rotação no veículo modelo.')
-              ),
+              TireSettings(),
 
-              Visibility(
-                visible: visibleComponents,
-                child: const TruckTires()
+              SwitchCustom(text: 'Mesure frenquency e severity', onPressed: () {}),
+
+              CentralizedText(
+                text: "The specifications are saved automatically and will be used for the inspections that are started next.\nIf you want to use different settings for another inspection, return to this screen to configure again.", 
+                styleText: AppTheme.customTextStyles['regular-11']!
               ),
 
               const Spacer(),
 
               CustomButton(
-                buttonText: 'Aplicar', 
+                buttonText: 'Start', 
                 onPressed: () {
                   if (visibleComponents) RemovePopup(context);
                 },
