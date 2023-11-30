@@ -3,8 +3,9 @@ import 'package:treinamento/widgets/app_theme.dart';
 
 class SwitchCustom extends StatefulWidget {
   final String text;
+  final VoidCallback onPressed;
 
-  const SwitchCustom({Key? key, required this.text}) : super(key: key);
+  const SwitchCustom({Key? key, required this.text, required this.onPressed}) : super(key: key);
 
 
   @override
@@ -57,6 +58,7 @@ class _SwitchCustomState extends State<SwitchCustom> {
                     setState(() {
                       isSwitched = !isSwitched;
                       print(isSwitched);
+                      widget.onPressed();
                     });
                   },
                   child: AnimatedContainer(

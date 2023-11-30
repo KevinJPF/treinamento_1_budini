@@ -24,6 +24,14 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  bool visibleComponents = false;
+
+  void componentsVisibility() {
+    setState(() {
+      visibleComponents = !visibleComponents;
+      print(visibleComponents);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +60,17 @@ class _HomeViewState extends State<HomeView> {
                 rightIcon: null,
               ),
 
-              const SwitchCustom(text: 'Alterar sequência de inspeção'),
+              SwitchCustom(text: 'Alterar sequência de inspeção', onPressed: componentsVisibility,),
 
-              const CentralizedText(text: 'Para determinar um padrão de inspeção, selecione a posição inicial e rotação no veículo modelo.'),
+              Visibility(
+                visible: visibleComponents,
+                child: const CentralizedText(text: 'Para determinar um padrão de inspeção, selecione a posição inicial e rotação no veículo modelo.')
+              ),
 
-              const TruckTires(),
+              Visibility(
+                visible: visibleComponents,
+                child: const TruckTires()
+              ),
 
               const Spacer(),
 
