@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:treinamento/widgets/app_theme.dart';
 import 'package:treinamento/widgets/centralized_text.dart';
@@ -35,8 +36,11 @@ class _HomeViewState extends State<HomeView> {
     });
   }
 
+  Size designSize = Size(375, 812);
+
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context, designSize: designSize);
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -52,28 +56,42 @@ class _HomeViewState extends State<HomeView> {
         ),
         child: Column(
           children: [
+            const Header(
+              tituloHeader: 'Inspection P&D[62]',
+              hasLeftIcon: true,
+              leftIcon: CupertinoIcons.xmark,
+              hasRightIcon: true,
+              rightIcon: CupertinoIcons.gear_solid,
+            ),
             Expanded(
-              child: Column(
-                children: [
-                  const Header(
-                    tituloHeader: 'Inspection P&D[62]',
-                    hasLeftIcon: true,
-                    leftIcon: CupertinoIcons.xmark,
-                    hasRightIcon: true,
-                    rightIcon: CupertinoIcons.gear_solid,
-                  ),
-                  TitleText(
-                      titleText: 'Settings',
-                      titleStyle:
-                          AppTheme.customTextStyles['regular-24-highlight']!),
-                  const TireSettings(),
-                  SwitchCustom(
-                      text: 'Mesure frenquency e severity', onPressed: () {}),
-                  CentralizedText(
-                      text:
-                          "The specifications are saved automatically and will be used for the inspections that are started next.\nIf you want to use different settings for another inspection, return to this screen to configure again.",
-                      styleText: AppTheme.customTextStyles['regular-11']!),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    // TitleText(
+                    //     titleText: 'Settings',
+                    //     titleStyle:
+                    //         AppTheme.customTextStyles['regular-24-highlight']!),
+                    const TireSettings(),
+                    NumberList(
+                        numberQuantity: 10,
+                        isHorizontal: true,
+                        displayedNumbers: 5),
+                    NumberList(
+                        numberQuantity: 3,
+                        isHorizontal: true,
+                        displayedNumbers: 3),
+                    NumberList(
+                        numberQuantity: 12,
+                        isHorizontal: true,
+                        displayedNumbers: 4),
+                    SwitchCustom(
+                        text: 'Mesure frenquency e severity', onPressed: () {}),
+                    CentralizedText(
+                        text:
+                            "The specifications are saved automatically and will be used for the inspections that are started next.\nIf you want to use different settings for another inspection, return to this screen to configure again.",
+                        styleText: AppTheme.customTextStyles['regular-11']!),
+                  ],
+                ),
               ),
             ),
             CustomButton(

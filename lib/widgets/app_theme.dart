@@ -1,53 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTheme {
-
   static Map<String, Color> customColors = {
     'background-top': const Color(0xFF0A2430),
     'background-bottom': const Color(0xFF05455E),
-
     'activated-switch': const Color(0xFF27F3ED),
     'deactivated-switch': const Color(0x42000000),
-
     'principal-100': const Color(0xFF27F3ED),
     'principal-80': const Color(0xCC27F3ED),
     'principal-54': const Color(0x8A27F3ED),
     'principal-24': const Color(0x3D27F3ED),
     'principal-12': const Color(0x1F27F3ED),
-
-    'white-100':const Color(0xFFFFFFFF),
+    'white-100': const Color(0xFFFFFFFF),
     'white-80': const Color(0xCCFFFFFF),
     'white-54': const Color(0x8AFFFFFF),
     'white-24': const Color(0x3DFFFFFF),
     'white-12': const Color(0x1FFFFFFF),
-
-    'black-100':const Color(0xFF000000),
+    'black-100': const Color(0xFF000000),
     'black-80': const Color(0xCC000000),
     'black-54': const Color(0x8A000000),
     'black-28': const Color(0x47000000),
     'black-24': const Color(0x3D000000),
     'black-16': const Color(0x29000000),
     'black-12': const Color(0x1F000000),
-
-    'dark-blue-100':const Color(0xFF2D3442),
+    'dark-blue-100': const Color(0xFF2D3442),
     'dark-blue-80': const Color(0xCC2D3442),
     'dark-blue-54': const Color(0x8A2D3442),
     'dark-blue-24': const Color(0x3D2D3442),
     'dark-blue-12': const Color(0x1F2D3442),
-
-    'green-100':const Color(0xFF00FFC4),
+    'green-100': const Color(0xFF00FFC4),
     'green-80': const Color(0xCC00FFC4),
     'green-54': const Color(0x8A00FFC4),
     'green-24': const Color(0x3D00FFC4),
     'green-12': const Color(0x1F00FFC4),
-
-    'red-100':const Color(0xFFF32766),
+    'red-100': const Color(0xFFF32766),
     'red-80': const Color(0xCCF32766),
     'red-54': const Color(0x8AF32766),
     'red-24': const Color(0x3DF32766),
     'red-12': const Color(0x1FF32766),
-
-    'yellow-100':const Color(0xFFFFCC00),
+    'yellow-100': const Color(0xFFFFCC00),
     'yellow-80': const Color(0xCCFFCC00),
     'yellow-54': const Color(0x8AFFCC00),
     'yellow-24': const Color(0x3DFFCC00),
@@ -57,115 +49,114 @@ class AppTheme {
   static Map<String, TextStyle> customTextStyles = {
     'bold-48': TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 48.0,
+      fontSize: 48.0.sp,
       fontWeight: FontWeight.w700,
       color: customColors['white-100']!,
     ),
     'medium-34': TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 34.0,
+      fontSize: 34.0.sp,
       fontWeight: FontWeight.w600,
       color: customColors['white-100']!,
     ),
     'medium-20': TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 20.0,
+      fontSize: 20.0.sp,
       fontWeight: FontWeight.w600,
       color: customColors['white-100']!,
     ),
     'medium-18': TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 18.0,
+      fontSize: 18.0.sp,
       fontWeight: FontWeight.w600,
       color: customColors['dark-blue-100']!,
     ),
     'medium-16': TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 16.0,
+      fontSize: 16.0.sp,
       fontWeight: FontWeight.w600,
       color: customColors['white-100']!,
     ),
     'medium-16-highlight': TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 16.0,
+      fontSize: 16.0.sp,
       fontWeight: FontWeight.w600,
       color: customColors['principal-100']!,
     ),
     'medium-14': TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 14.0,
+      fontSize: 14.0.sp,
       fontWeight: FontWeight.w600,
       color: customColors['white-100']!,
     ),
     'medium-14-blue': TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 14.0,
+      fontSize: 14.0.sp,
       fontWeight: FontWeight.w500,
       color: customColors['dark-blue-100']!,
     ),
     'regular-11': TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 11.0,
+      fontSize: 11.0.sp,
       fontWeight: FontWeight.w400,
       color: customColors['white-54']!,
     ),
     'regular-11-white': TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 11.0,
+      fontSize: 11.0.sp,
       fontWeight: FontWeight.w300,
       color: customColors['white-100']!,
     ),
     'regular-11-highlight': TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 11.0,
+      fontSize: 11.0.sp,
       fontWeight: FontWeight.w400,
       color: customColors['principal-100']!,
     ),
     'regular-24': TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 24.0,
+      fontSize: 24.0.sp,
       fontWeight: FontWeight.w400,
       color: customColors['white-100']!,
     ),
     'regular-24-highlight': TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 24.0,
+      fontSize: 24.0.sp,
       fontWeight: FontWeight.w400,
       color: customColors['principal-100']!,
     ),
     'regular-34-highlight': TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 34.0,
+      fontSize: 34.0.sp,
       fontWeight: FontWeight.w400,
       color: customColors['principal-100']!,
     ),
-
     'regular-14': TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 14.0,
+      fontSize: 14.0.sp,
       fontWeight: FontWeight.w400,
       color: customColors['dark-blue-54']!,
     ),
     'regular-14-100': TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 14.0,
+      fontSize: 14.0.sp,
       fontWeight: FontWeight.w600,
       color: customColors['dark-blue-100']!,
     ),
     'regular-14-54': TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 14.0,
+      fontSize: 14.0.sp,
       fontWeight: FontWeight.w600,
       color: customColors['dark-blue-54']!,
     ),
     'regular-6': TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 6.0,
+      fontSize: 6.0.sp,
       fontWeight: FontWeight.w300,
       color: customColors['dark-blue-100']!,
     ),
   };
-  
+
   static ThemeData lightTheme = ThemeData(
     primaryColor: Colors.blue,
     hintColor: Colors.orange,

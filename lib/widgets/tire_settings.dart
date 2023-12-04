@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:treinamento/widgets/app_theme.dart';
-import 'package:treinamento/widgets/centralized_text.dart';
 import 'package:treinamento/widgets/number_list.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TireSettings extends StatefulWidget {
   const TireSettings({super.key});
@@ -16,10 +17,13 @@ class _TireSettingsState extends State<TireSettings> {
   int numberOfPoints = 1;
   int numberOfThreads = 1;
 
+  Size designSize = Size(375, 812);
+
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context, designSize: designSize);
     return Container(
-      padding: EdgeInsets.only(left: 16, right: 16),
+      padding: EdgeInsets.only(left: 16.w, right: 16.w),
       width: double.infinity,
       // height: 400,
       // color: Colors.black,
@@ -41,7 +45,7 @@ class _TireSettingsState extends State<TireSettings> {
                 ),
               ),
               SizedBox(
-                width: 16,
+                width: 16.w,
               ),
               Expanded(
                 flex: 1,
@@ -56,7 +60,7 @@ class _TireSettingsState extends State<TireSettings> {
                 ),
               ),
               SizedBox(
-                width: 16,
+                width: 16.w,
               ),
               Expanded(
                 flex: 1,
@@ -72,7 +76,7 @@ class _TireSettingsState extends State<TireSettings> {
                 ),
               ),
               SizedBox(
-                width: 16,
+                width: 16.w,
               ),
               Expanded(
                 flex: 2,
@@ -84,7 +88,7 @@ class _TireSettingsState extends State<TireSettings> {
             ],
           ),
           SizedBox(
-            height: 16,
+            height: 16.w,
           ),
           Row(
             // crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,16 +102,17 @@ class _TireSettingsState extends State<TireSettings> {
                     numberQuantity: 8,
                     isHorizontal: false,
                     initialNumber: 1,
-                    onSelectionChanged: (value) {
-                      setState(() {
-                        numberOfSections = value;
-                      });
-                    },
+                    displayedNumbers: 5,
+                    // onSelectionChanged: (value) {
+                    //   setState(() {
+                    //     numberOfSections = value;
+                    //   });
+                    // },
                   ),
                 ),
               ),
               SizedBox(
-                width: 16,
+                width: 16.w,
               ),
               Expanded(
                 child: Column(
@@ -118,18 +123,19 @@ class _TireSettingsState extends State<TireSettings> {
                         numberQuantity: 2,
                         isHorizontal: false,
                         initialNumber: 1,
-                        onSelectionChanged: (value) {
-                          setState(() {
-                            numberOfPoints = value;
-                          });
-                        },
+                        displayedNumbers: 3,
+                        // onSelectionChanged: (value) {
+                        //   setState(() {
+                        //     numberOfPoints = value;
+                        //   });
+                        // },
                       ),
                     ),
                   ],
                 ),
               ),
               SizedBox(
-                width: 16,
+                width: 16.w,
               ),
               Expanded(
                 flex: 1,
@@ -139,33 +145,24 @@ class _TireSettingsState extends State<TireSettings> {
                   child: NumberList(
                     numberQuantity: 8,
                     isHorizontal: false,
-                    initialNumber: 1,
-                    onSelectionChanged: (value) {
-                      setState(() {
-                        numberOfThreads = value;
-                      });
-                    },
+                    // initialNumber: 1,
+                    displayedNumbers: 6,
+                    // onSelectionChanged: (value) {
+                    //   setState(() {
+                    //     numberOfThreads = value;
+                    //   });
+                    // },
                   ),
                 ),
               ),
               SizedBox(
-                width: 16,
+                width: 16.w,
               ),
               Expanded(
                 flex: 2,
                 child: Stack(
                   alignment: Alignment.topCenter,
                   children: [
-                    Expanded(
-                      child: Container(
-                        // color: Colors.amber,
-                        child: Column(
-                          children: [
-                            Row(),
-                          ],
-                        ),
-                      ),
-                    ),
                     Column(
                       children: [
                         Container(
@@ -175,7 +172,7 @@ class _TireSettingsState extends State<TireSettings> {
                             children: [
                               Container(
                                 // margin: EdgeInsets.only(top: 62),
-                                width: double.infinity * 0.75,
+                                width: double.infinity * 0.75.w,
                                 // color: Colors.blue,
                                 child: SvgPicture.asset(
                                   'assets/svg/rad_${numberOfSections}.svg',
@@ -183,13 +180,13 @@ class _TireSettingsState extends State<TireSettings> {
                                 ),
                               ),
                               SizedBox(
-                                height: 32,
+                                height: 32.h,
                               ),
                               Stack(
                                 // alignment: Alignment.center,
                                 children: [
                                   Container(
-                                    width: double.infinity * 0.75,
+                                    width: double.infinity * 0.75.w,
                                     // color: Colors.blue,
                                     child: SvgPicture.asset(
                                       'assets/svg/tire_for_points_sections.svg',
@@ -198,15 +195,16 @@ class _TireSettingsState extends State<TireSettings> {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
-                                        top: numberOfPoints == 2 ? 0 : 10),
+                                        top: numberOfPoints == 2 ? 0 : 10.h),
                                     // color: Colors.pink,
                                     child: Stack(
                                       alignment: Alignment.center,
                                       children: [
                                         Container(
                                           margin: EdgeInsets.only(
-                                              left:
-                                                  numberOfPoints == 2 ? 0 : 10),
+                                              left: numberOfPoints == 2
+                                                  ? 0
+                                                  : 10.h),
                                           // alignment: Alignment.center,
                                           // color: Colors.red,
                                           child: Text(

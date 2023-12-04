@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:treinamento/widgets/app_theme.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -16,20 +17,19 @@ class CustomButton extends StatelessWidget {
   final Color buttonBorderColor;
 
   const CustomButton(
-      {super.key, 
-      required this.buttonText, 
+      {super.key,
+      required this.buttonText,
       required this.onPressed,
-      required this.buttonHeight, 
-      required this.buttonBorderRadius, 
-      required this.buttonTextStyle, 
-      required this.buttonMarginTop, 
-      required this.buttonMarginBottom, 
-      required this.buttonMarginLeft, 
-      required this.buttonMarginRight, 
-      required this.buttonBackColor, 
-      required this.buttonBorderWidth, 
-      required this.buttonBorderColor}
-    );
+      required this.buttonHeight,
+      required this.buttonBorderRadius,
+      required this.buttonTextStyle,
+      required this.buttonMarginTop,
+      required this.buttonMarginBottom,
+      required this.buttonMarginLeft,
+      required this.buttonMarginRight,
+      required this.buttonBackColor,
+      required this.buttonBorderWidth,
+      required this.buttonBorderColor});
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +37,19 @@ class CustomButton extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          height: buttonHeight,
-          margin: EdgeInsets.only(left: buttonMarginLeft, right: buttonMarginRight, top: buttonMarginTop  , bottom: buttonMarginBottom),
-          decoration: BoxDecoration (
+          height: buttonHeight.h,
+          margin: EdgeInsets.only(
+              left: buttonMarginLeft.w,
+              right: buttonMarginRight.w,
+              top: buttonMarginTop.h,
+              bottom: buttonMarginBottom.h),
+          decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(buttonBorderRadius),
             boxShadow: [
               BoxShadow(
                 color: AppTheme.customColors['black-16']!,
-                offset: Offset(0, 4),
-                blurRadius: 8,
+                offset: Offset(0, 4.h),
+                blurRadius: 8.sp,
               ),
             ],
           ),
@@ -56,7 +60,7 @@ class CustomButton extends StatelessWidget {
               side: MaterialStateProperty.all<BorderSide>(
                 BorderSide(
                   color: buttonBorderColor!,
-                  width: buttonBorderWidth,
+                  width: buttonBorderWidth.w,
                 ),
               ),
               elevation: MaterialStateProperty.all<double>(0),
@@ -65,7 +69,7 @@ class CustomButton extends StatelessWidget {
               ),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(buttonBorderRadius),
+                  borderRadius: BorderRadius.circular(buttonBorderRadius.sp),
                 ),
               ),
             ),
