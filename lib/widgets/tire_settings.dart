@@ -17,6 +17,16 @@ class _TireSettingsState extends State<TireSettings> {
   int numberOfPoints = 1;
   int numberOfThreads = 1;
 
+  List<String> players = [
+    'Neymar',
+    'CR7',
+    'Messi',
+    'Reus',
+    'Dudu',
+    'Endrick',
+    'Deyverson',
+  ];
+
   Size designSize = Size(375, 812);
 
   @override
@@ -94,20 +104,26 @@ class _TireSettingsState extends State<TireSettings> {
             // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: Container(
                   // height: 50,
                   // color: Colors.pink,
                   child: NumberList(
+                    selectedText:
+                        AppTheme.customTextStyles['regular-24-highlight']!,
+                    unselectedText: AppTheme.customTextStyles['medium-14']!,
                     numberQuantity: 8,
                     isHorizontal: false,
-                    initialNumber: 1,
-                    displayedNumbers: 5,
-                    // onSelectionChanged: (value) {
-                    //   setState(() {
-                    //     numberOfSections = value;
-                    //   });
-                    // },
+                    displayedElements: 5,
+                    elements: players,
+                    cardsHeight: 60,
+                    cardsWidth: double.infinity,
+                    onSelectionChanged: (value) {
+                      setState(() {
+                        // numberOfSections = value;
+                        print(players[value]);
+                      });
+                    },
                   ),
                 ),
               ),
@@ -120,10 +136,18 @@ class _TireSettingsState extends State<TireSettings> {
                     Container(
                       // color: Colors.pink,
                       child: NumberList(
+                        selectedText:
+                            AppTheme.customTextStyles['regular-24-highlight']!,
+                        unselectedText: AppTheme.customTextStyles['medium-14']!,
                         numberQuantity: 2,
                         isHorizontal: false,
-                        initialNumber: 1,
-                        displayedNumbers: 3,
+                        displayedElements: 3,
+                        elements: const [
+                          '1',
+                          '2',
+                        ],
+                        cardsHeight: 60,
+                        cardsWidth: double.infinity,
                         // onSelectionChanged: (value) {
                         //   setState(() {
                         //     numberOfPoints = value;
@@ -138,15 +162,28 @@ class _TireSettingsState extends State<TireSettings> {
                 width: 16.w,
               ),
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: Container(
                   // height: 50,
                   // color: Colors.pink,
                   child: NumberList(
-                    numberQuantity: 8,
+                    selectedText:
+                        AppTheme.customTextStyles['regular-24-highlight']!,
+                    unselectedText: AppTheme.customTextStyles['medium-14']!,
+                    numberQuantity: 6,
                     isHorizontal: false,
                     // initialNumber: 1,
-                    displayedNumbers: 6,
+                    displayedElements: 6,
+                    elements: const [
+                      'Kevin',
+                      'Lucas',
+                      'Francisco',
+                      'Felipe',
+                      'Jonathan',
+                      'Cris'
+                    ],
+                    cardsHeight: 60,
+                    cardsWidth: double.infinity,
                     // onSelectionChanged: (value) {
                     //   setState(() {
                     //     numberOfThreads = value;
@@ -159,7 +196,7 @@ class _TireSettingsState extends State<TireSettings> {
                 width: 16.w,
               ),
               Expanded(
-                flex: 2,
+                flex: 1,
                 child: Stack(
                   alignment: Alignment.topCenter,
                   children: [

@@ -5,20 +5,26 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class NumberList extends StatefulWidget {
   final int numberQuantity;
   final bool isHorizontal;
-  final List<String>? dados;
+  final List<String> elements;
   final Function(int)? onSelectionChanged;
-  final int? initialNumber;
-  final int displayedNumbers;
+  final int displayedElements;
+  final double cardsHeight;
+  final double cardsWidth;
+  final TextStyle selectedText;
+  final TextStyle unselectedText;
 
-  NumberList(
-      {Key? key,
-      required this.numberQuantity,
-      required this.isHorizontal,
-      this.dados,
-      this.onSelectionChanged,
-      this.initialNumber,
-      required this.displayedNumbers})
-      : super(key: key);
+  NumberList({
+    Key? key,
+    required this.numberQuantity,
+    required this.isHorizontal,
+    required this.elements,
+    this.onSelectionChanged,
+    required this.displayedElements,
+    this.cardsHeight = 60,
+    this.cardsWidth = 60,
+    required this.selectedText,
+    required this.unselectedText,
+  }) : super(key: key);
 
   @override
   _NumberListState createState() => _NumberListState();
@@ -27,9 +33,8 @@ class NumberList extends StatefulWidget {
 class _NumberListState extends State<NumberList> {
   late ScrollController _scrollController;
   late int _currentNumber = 1;
-  late String _currentContent;
   late int totalNumbers;
-  late int displayedNumbers;
+  late int displayedElements;
 
   double selectionSize = 0;
   bool isAnimating = false;
@@ -37,14 +42,16 @@ class _NumberListState extends State<NumberList> {
   @override
   void initState() {
     super.initState();
-    _currentNumber = 1;
-    selectionSize = (widget.isHorizontal ? 60.0.w : 60.0.h);
-    // _currentContent = widget.dados[0];
-    totalNumbers = widget.numberQuantity;
-    displayedNumbers = widget.displayedNumbers;
+    _currentNumber = 0;
+    selectionSize =
+        (widget.isHorizontal ? widget.cardsWidth.w : widget.cardsHeight.h);
+    totalNumbers = widget.elements.length;
+    displayedElements = widget.displayedElements;
+    double initialIndex =
+        totalNumbers * 1000 + (displayedElements % 2 == 0 ? 1 : 0);
     _scrollController = ScrollController(
-      initialScrollOffset: (1000 * selectionSize) -
-          ((displayedNumbers / 2).floor() * selectionSize),
+      initialScrollOffset: (initialIndex * selectionSize) -
+          ((displayedElements / 2).floor() * selectionSize),
     );
   }
 
@@ -53,13 +60,13 @@ class _NumberListState extends State<NumberList> {
 
     final initialIndex = (((_scrollController.offset) / selectionSize).round());
     final jumpOffset =
-        (displayedNumbers / 2).floor() - (displayedNumbers % 2 != 0 ? 0 : 1);
+        (displayedElements / 2).floor() - (displayedElements % 2 != 0 ? 0 : 1);
     final centerIndex = initialIndex + jumpOffset;
 
-    final newNumber = ((centerIndex % totalNumbers) + 1);
+    final newNumber = ((centerIndex % totalNumbers));
 
     // Calcule a posição de rolagem ideal para centralizar o número
-    final idealOffset = (centerIndex - jumpOffset) * selectionSize;
+    final idealOffset = (initialIndex * selectionSize);
 
     setState(() {
       if (newNumber != _currentNumber) {
@@ -67,14 +74,15 @@ class _NumberListState extends State<NumberList> {
       }
 
       if (stopScroll) {
-        print('index scrollado: $centerIndex');
-        print('offset scrollado: $idealOffset');
-        print(
-            "\n offset: $centerIndex - ($displayedNumbers / 2 * ${selectionSize}) \n");
+        // print('idealoffset: $idealOffset');
+        // print('index scrollado: $centerIndex');
+        // print('offset scrollado: ${_scrollController.offset}');
+        // print(
+        //     "\n offset: $centerIndex - ($displayedElements / 2 * ${selectionSize}) \n");
         isAnimating = true;
 
         // _centralizeSelectedNumber(idealOffset);
-        _scrollController.position.jumpTo(idealOffset);
+        _scrollController.jumpTo(idealOffset);
 
         isAnimating = false;
       }
@@ -88,7 +96,9 @@ class _NumberListState extends State<NumberList> {
   void _centralizeSelectedNumber(double idealOffset) {
     _scrollController
         .animateTo(
-          displayedNumbers % 2 == 0 ? idealOffset + selectionSize : idealOffset,
+          displayedElements % 2 == 0
+              ? idealOffset + selectionSize
+              : idealOffset,
           duration: Duration(milliseconds: 500),
           curve: Curves.easeInOut,
         )
@@ -113,57 +123,61 @@ class _NumberListState extends State<NumberList> {
           children: [
             Container(
               margin: EdgeInsets.only(
-                  right: (widget.isHorizontal && displayedNumbers % 2 == 0
-                      ? 60.w
+                  right: (widget.isHorizontal && displayedElements % 2 == 0
+                      ? widget.cardsWidth.w
                       : 0),
-                  bottom: (!widget.isHorizontal && displayedNumbers % 2 == 0
-                      ? 60.h
+                  bottom: (!widget.isHorizontal && displayedElements % 2 == 0
+                      ? widget.cardsHeight.h
                       : 0)),
-              width: widget.isHorizontal ? 60.w : 70.w,
-              height: widget.isHorizontal ? 70.h : 60.h,
+              width: widget.cardsWidth.w,
+              height: widget.cardsHeight.h,
               decoration: BoxDecoration(
                 color: AppTheme.customColors['white-24'],
                 borderRadius: BorderRadius.circular(8.sp),
               ),
             ),
             Container(
-              width: widget.isHorizontal ? (displayedNumbers * 60.w) : 70.w,
-              height: widget.isHorizontal ? 70.h : (displayedNumbers * 60.h),
-              color: Colors.green,
+              width: widget.isHorizontal
+                  ? (displayedElements * widget.cardsWidth.w)
+                  : widget.cardsWidth,
+              height: widget.isHorizontal
+                  ? widget.cardsHeight.h
+                  : (displayedElements * widget.cardsHeight.h),
+              // color: Colors.green,
               child: ListView.builder(
+                padding: EdgeInsets.zero,
                 controller: _scrollController,
                 itemExtent: widget.isHorizontal
-                    ? 60.w
-                    : 60.h, // Defina a altura do item
+                    ? widget.cardsWidth.w
+                    : widget.cardsHeight.h, // Defina a altura do item
                 scrollDirection:
                     widget.isHorizontal ? Axis.horizontal : Axis.vertical,
                 itemBuilder: (context, index) {
-                  final number = (index % totalNumbers) + 1;
+                  final number = (index % totalNumbers);
                   return GestureDetector(
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
-                      print('index clicado: $index');
+                      // print('index clicado: $index');
                       // Centralize o número clicado
                       _centralizeSelectedNumber(
-                          (index - ((displayedNumbers / 2).floor())) *
+                          (index - ((displayedElements / 2).floor())) *
                               (selectionSize));
-                      // print("\n offset: $index - ($displayedNumbers / 2 * ${60.0.sp} \n");
+                      // print("\n offset: $index - ($displayedElements / 2 * ${60.0.sp} \n");
 
-                      print('Numero atual: $_currentNumber');
-                      print('Numero selecionado: $number');
+                      // print('Numero atual: $_currentNumber');
+                      // print('Numero selecionado: $number');
                     },
                     child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                      color: Colors.pink,
+                      // margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                      // color: Colors.pink,
                       alignment: Alignment.center,
                       child: Align(
                         alignment: Alignment.center,
                         child: Text(
-                          '$number',
+                          '${widget.elements[number]}',
                           style: number == _currentNumber
-                              ? AppTheme
-                                  .customTextStyles['regular-24-highlight']!
-                              : AppTheme.customTextStyles['medium-14']!,
+                              ? widget.selectedText
+                              : widget.unselectedText,
                         ),
                       ),
                     ),
