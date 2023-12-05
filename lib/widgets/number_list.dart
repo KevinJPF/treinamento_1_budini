@@ -74,17 +74,15 @@ class _NumberListState extends State<NumberList> {
       }
 
       if (stopScroll) {
-        // print('idealoffset: $idealOffset');
-        // print('index scrollado: $centerIndex');
-        // print('offset scrollado: ${_scrollController.offset}');
-        // print(
-        //     "\n offset: $centerIndex - ($displayedElements / 2 * ${selectionSize}) \n");
         isAnimating = true;
 
-        // _centralizeSelectedNumber(idealOffset);
-        _scrollController.jumpTo(idealOffset);
-
-        isAnimating = false;
+        _scrollController
+            .animateTo(
+              idealOffset,
+              duration: Duration(milliseconds: 200),
+              curve: Curves.easeInOut,
+            )
+            .then((value) => isAnimating = false);
       }
 
       if (widget.onSelectionChanged != null) {
@@ -94,15 +92,17 @@ class _NumberListState extends State<NumberList> {
   }
 
   void _centralizeSelectedNumber(double idealOffset) {
-    _scrollController
-        .animateTo(
-          displayedElements % 2 == 0
-              ? idealOffset + selectionSize
-              : idealOffset,
-          duration: Duration(milliseconds: 500),
-          curve: Curves.easeInOut,
-        )
-        .then((value) => isAnimating = false);
+    setState(() {
+      _scrollController
+          .animateTo(
+            displayedElements % 2 == 0
+                ? idealOffset + selectionSize
+                : idealOffset,
+            duration: Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
+          )
+          .then((value) => isAnimating = false);
+    });
   }
 
   @override
@@ -114,7 +114,8 @@ class _NumberListState extends State<NumberList> {
             _updateCurrentNumber(false);
           }
           if (notification is ScrollEndNotification) {
-            _updateCurrentNumber(true);
+            Future.delayed(Duration(milliseconds: 1))
+                .then((value) => _updateCurrentNumber(true));
           }
           return false;
         },
@@ -157,15 +158,9 @@ class _NumberListState extends State<NumberList> {
                   return GestureDetector(
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
-                      // print('index clicado: $index');
-                      // Centralize o número clicado
                       _centralizeSelectedNumber(
                           (index - ((displayedElements / 2).floor())) *
                               (selectionSize));
-                      // print("\n offset: $index - ($displayedElements / 2 * ${60.0.sp} \n");
-
-                      // print('Numero atual: $_currentNumber');
-                      // print('Numero selecionado: $number');
                     },
                     child: Container(
                       // margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
