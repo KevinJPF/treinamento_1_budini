@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:treinamento/views/api_training.dart';
 import 'views/home_view.dart';
 
 main() {
@@ -16,7 +17,7 @@ class AppWidget extends StatelessWidget {
       home: ScreenUtilInit(
         designSize: designSize,
         child: const Scaffold(
-          body: HomeView(),
+          body: ApiTraining(),
         ),
       ),
     );
