@@ -10,14 +10,14 @@ import 'package:treinamento/widgets/number_list.dart';
 import 'package:xml2json/xml2json.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ApiTraining extends StatefulWidget {
-  const ApiTraining({super.key});
+class ApiJson extends StatefulWidget {
+  const ApiJson({super.key});
 
   @override
-  State<ApiTraining> createState() => _RegisterViewState();
+  State<ApiJson> createState() => _RegisterViewState();
 }
 
-class _RegisterViewState extends State<ApiTraining> {
+class _RegisterViewState extends State<ApiJson> {
   Future<Map<String, dynamic>>? _futureData;
   List<String> pneus = [];
   int index = 0;
@@ -92,12 +92,15 @@ class _RegisterViewState extends State<ApiTraining> {
                   child: Center(
                       child: Column(
                     children: [
-                      const Header(
+                      Header(
                         tituloHeader: 'Diagnóstico Pneus',
                         hasLeftIcon: true,
                         leftIcon: CupertinoIcons.xmark,
                         hasRightIcon: true,
                         rightIcon: CupertinoIcons.gear_solid,
+                        onPressedLeft: () {
+                          Navigator.of(context).pop();
+                        },
                       ),
                       const Spacer(),
                       const CircularProgressIndicator(color: Color(0xFF27F3ED)),
@@ -143,12 +146,15 @@ class _RegisterViewState extends State<ApiTraining> {
                 ),
                 child: Column(
                   children: [
-                    const Header(
+                    Header(
                       tituloHeader: 'Diagnóstico Pneus',
                       hasLeftIcon: true,
                       leftIcon: CupertinoIcons.xmark,
                       hasRightIcon: true,
                       rightIcon: CupertinoIcons.gear_solid,
+                      onPressedLeft: () {
+                        Navigator.of(context).pop();
+                      },
                     ),
                     Expanded(
                       child: ListView(

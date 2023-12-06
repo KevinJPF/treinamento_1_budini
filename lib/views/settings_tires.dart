@@ -11,7 +11,7 @@ import 'package:treinamento/widgets/custom_textfield.dart';
 import 'package:treinamento/widgets/edit_person.dart';
 import 'package:treinamento/widgets/footer.dart';
 import 'package:treinamento/widgets/header.dart';
-import 'package:treinamento/widgets/remove_popup.dart';
+import 'package:treinamento/widgets/simple_popup.dart';
 import 'package:treinamento/widgets/subheader.dart';
 import 'package:treinamento/widgets/tire_settings.dart';
 import 'package:treinamento/widgets/title_text.dart';
@@ -19,14 +19,14 @@ import 'package:treinamento/widgets/truck_tires.dart';
 import 'package:treinamento/widgets/users_list.dart';
 import 'package:treinamento/database/db_connection.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+class SettingsTires extends StatefulWidget {
+  const SettingsTires({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<SettingsTires> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomeViewState extends State<SettingsTires> {
   bool visibleComponents = false;
 
   void componentsVisibility() {
@@ -56,12 +56,15 @@ class _HomeViewState extends State<HomeView> {
         ),
         child: Column(
           children: [
-            const Header(
+            Header(
               tituloHeader: 'Inspection P&D[62]',
               hasLeftIcon: true,
               leftIcon: CupertinoIcons.xmark,
               hasRightIcon: true,
               rightIcon: CupertinoIcons.gear_solid,
+              onPressedLeft: () {
+                Navigator.of(context).pop();
+              },
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -72,73 +75,6 @@ class _HomeViewState extends State<HomeView> {
                     //     titleStyle:
                     //         AppTheme.customTextStyles['regular-24-highlight']!),
                     const TireSettings(),
-                    NumberList(
-                      selectedText:
-                          AppTheme.customTextStyles['regular-24-highlight']!,
-                      unselectedText: AppTheme.customTextStyles['medium-14']!,
-                      isHorizontal: true,
-                      displayedElements: 5,
-                      elements: const [
-                        '1',
-                        '2',
-                        '3',
-                        '4',
-                        '5',
-                        '6',
-                        '7',
-                        '8',
-                        'AUTO',
-                      ],
-                      cardsHeight: 70,
-                      cardsWidth: 50,
-                    ),
-                    NumberList(
-                      selectedText:
-                          AppTheme.customTextStyles['regular-24-highlight']!,
-                      unselectedText: AppTheme.customTextStyles['medium-14']!,
-                      isHorizontal: true,
-                      displayedElements: 3,
-                      elements: const [
-                        '1',
-                        '2',
-                        'Auto',
-                      ],
-                      cardsHeight: 60,
-                      cardsWidth: 90,
-                    ),
-                    NumberList(
-                      selectedText:
-                          AppTheme.customTextStyles['regular-24-highlight']!,
-                      unselectedText: AppTheme.customTextStyles['medium-14']!,
-                      isHorizontal: true,
-                      displayedElements: 4,
-                      elements: const [
-                        '1',
-                        '2',
-                        '3',
-                        'Auto',
-                      ],
-                      cardsHeight: 90,
-                      cardsWidth: 50,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    NumberList(
-                      selectedText:
-                          AppTheme.customTextStyles['regular-24-highlight']!,
-                      unselectedText: AppTheme.customTextStyles['medium-14']!,
-                      isHorizontal: false,
-                      displayedElements: 4,
-                      elements: const [
-                        '1',
-                        '2',
-                        '3',
-                        'Auto',
-                      ],
-                      cardsHeight: 60,
-                      cardsWidth: 90,
-                    ),
                     SwitchCustom(
                         text: 'Mesure frenquency e severity', onPressed: () {}),
                     CentralizedText(
@@ -152,7 +88,7 @@ class _HomeViewState extends State<HomeView> {
             CustomButton(
               buttonText: 'Start',
               onPressed: () {
-                if (visibleComponents) RemovePopup(context);
+                if (visibleComponents) SimplePopup(context);
               },
               buttonHeight: 48,
               buttonTextStyle: AppTheme.customTextStyles['medium-18']!,

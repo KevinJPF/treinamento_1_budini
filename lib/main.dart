@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:treinamento/views/api_training.dart';
-import 'views/home_view.dart';
+import 'package:treinamento/views/api_json.dart';
+import 'package:treinamento/views/training_hub.dart';
+import 'views/settings_tires.dart';
 
 main() {
   // debugPaintSizeEnabled = true;
@@ -17,7 +18,7 @@ class AppWidget extends StatelessWidget {
       home: ScreenUtilInit(
         designSize: designSize,
         child: const Scaffold(
-          body: ApiTraining(),
+          body: TrainingHub(),
         ),
       ),
     );

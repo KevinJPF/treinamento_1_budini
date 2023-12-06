@@ -8,6 +8,7 @@ class Header extends StatelessWidget {
   final IconData? leftIcon;
   final bool hasRightIcon;
   final IconData? rightIcon;
+  final VoidCallback onPressedLeft;
 
   const Header(
       {super.key,
@@ -15,7 +16,8 @@ class Header extends StatelessWidget {
       required this.hasLeftIcon,
       this.leftIcon,
       required this.hasRightIcon,
-      this.rightIcon});
+      this.rightIcon,
+      required this.onPressedLeft});
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +32,13 @@ class Header extends StatelessWidget {
           // color: Colors.white,
           child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Container(
-              height: 48.h,
+              height: hasLeftIcon ? 48.h : 0,
               width: 48.w,
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(top: 4.h, left: 4.w),
               // color: Colors.orange,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: onPressedLeft,
                 style: ButtonStyle(
                   elevation: MaterialStateProperty.all<double>(0),
                   padding: MaterialStateProperty.all(EdgeInsets.zero),

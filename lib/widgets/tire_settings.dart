@@ -17,14 +17,32 @@ class _TireSettingsState extends State<TireSettings> {
   int numberOfPoints = 1;
   int numberOfThreads = 1;
 
-  List<String> players = [
-    'Neymar',
-    'CR7',
-    'Messi',
-    'Reus',
-    'Dudu',
-    'Endrick',
-    'Deyverson',
+  List<String> sections = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+  ];
+
+  List<String> points = [
+    '1',
+    '2',
+  ];
+
+  List<String> threads = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    'AUTO',
   ];
 
   Size designSize = Size(375, 812);
@@ -104,7 +122,7 @@ class _TireSettingsState extends State<TireSettings> {
             // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                flex: 2,
+                flex: 1,
                 child: Container(
                   // height: 50,
                   // color: Colors.pink,
@@ -114,13 +132,12 @@ class _TireSettingsState extends State<TireSettings> {
                     unselectedText: AppTheme.customTextStyles['medium-14']!,
                     isHorizontal: false,
                     displayedElements: 5,
-                    elements: players,
+                    elements: sections,
                     cardsHeight: 60,
                     cardsWidth: double.infinity,
                     onSelectionChanged: (value) {
                       setState(() {
-                        // numberOfSections = value;
-                        print(players[value]);
+                        numberOfSections = value + 1;
                       });
                     },
                   ),
@@ -140,17 +157,14 @@ class _TireSettingsState extends State<TireSettings> {
                         unselectedText: AppTheme.customTextStyles['medium-14']!,
                         isHorizontal: false,
                         displayedElements: 3,
-                        elements: const [
-                          '1',
-                          '2',
-                        ],
+                        elements: points,
                         cardsHeight: 60,
                         cardsWidth: double.infinity,
-                        // onSelectionChanged: (value) {
-                        //   setState(() {
-                        //     numberOfPoints = value;
-                        //   });
-                        // },
+                        onSelectionChanged: (value) {
+                          setState(() {
+                            numberOfPoints = value + 1;
+                          });
+                        },
                       ),
                     ),
                   ],
@@ -160,7 +174,7 @@ class _TireSettingsState extends State<TireSettings> {
                 width: 16.w,
               ),
               Expanded(
-                flex: 2,
+                flex: 1,
                 child: Container(
                   // height: 50,
                   // color: Colors.pink,
@@ -170,22 +184,15 @@ class _TireSettingsState extends State<TireSettings> {
                     unselectedText: AppTheme.customTextStyles['medium-14']!,
                     isHorizontal: false,
                     // initialNumber: 1,
-                    displayedElements: 6,
-                    elements: const [
-                      'Kevin',
-                      'Lucas',
-                      'Francisco',
-                      'Felipe',
-                      'Jonathan',
-                      'Cris'
-                    ],
+                    displayedElements: 5,
+                    elements: threads,
                     cardsHeight: 60,
                     cardsWidth: double.infinity,
-                    // onSelectionChanged: (value) {
-                    //   setState(() {
-                    //     numberOfThreads = value;
-                    //   });
-                    // },
+                    onSelectionChanged: (value) {
+                      setState(() {
+                        numberOfThreads = value + (value == 8 ? 0 : 1);
+                      });
+                    },
                   ),
                 ),
               ),

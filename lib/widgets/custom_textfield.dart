@@ -11,8 +11,8 @@ class CustomTextField extends StatelessWidget {
       {super.key,
       required this.controllerText,
       required this.hintText,
-      required this.isPassword, 
-      required this.removeSpaces, 
+      required this.isPassword,
+      required this.removeSpaces,
       required this.titleText});
 
   @override
@@ -22,19 +22,18 @@ class CustomTextField extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              alignment: Alignment.bottomLeft,
-              margin: EdgeInsets.only(bottom: 4),
-              child: Text(
-                titleText,
-                style: AppTheme.customTextStyles['regular-14'],
-                )
-            ),
+                alignment: Alignment.bottomLeft,
+                margin: EdgeInsets.only(bottom: 4),
+                child: Text(
+                  titleText,
+                  style: AppTheme.customTextStyles['regular-14'],
+                )),
             Container(
               height: 48,
-        decoration: BoxDecoration(
-              color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-        ),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+              ),
               child: TextField(
                 controller: controllerText,
                 decoration: InputDecoration(
@@ -56,8 +55,8 @@ class CustomTextField extends StatelessWidget {
                     if (text != textWithoutSpaces) {
                       controllerText.value = TextEditingValue(
                         text: textWithoutSpaces,
-                        selection:
-                            TextSelection.collapsed(offset: textWithoutSpaces.length),
+                        selection: TextSelection.collapsed(
+                            offset: textWithoutSpaces.length),
                       );
                     }
                   }
