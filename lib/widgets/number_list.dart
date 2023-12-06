@@ -3,7 +3,6 @@ import 'package:treinamento/widgets/app_theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NumberList extends StatefulWidget {
-  final int numberQuantity;
   final bool isHorizontal;
   final List<String> elements;
   final Function(int)? onSelectionChanged;
@@ -15,7 +14,6 @@ class NumberList extends StatefulWidget {
 
   NumberList({
     Key? key,
-    required this.numberQuantity,
     required this.isHorizontal,
     required this.elements,
     this.onSelectionChanged,

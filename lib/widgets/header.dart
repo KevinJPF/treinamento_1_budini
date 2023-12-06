@@ -26,7 +26,7 @@ class Header extends StatelessWidget {
         Container(
           margin: EdgeInsets.only(top: statusBarHeight),
           width: MediaQuery.of(context).size.width,
-          height: 56,
+          height: 56.h,
           // color: Colors.white,
           child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Container(

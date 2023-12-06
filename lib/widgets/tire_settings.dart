@@ -112,7 +112,6 @@ class _TireSettingsState extends State<TireSettings> {
                     selectedText:
                         AppTheme.customTextStyles['regular-24-highlight']!,
                     unselectedText: AppTheme.customTextStyles['medium-14']!,
-                    numberQuantity: 8,
                     isHorizontal: false,
                     displayedElements: 5,
                     elements: players,
@@ -139,7 +138,6 @@ class _TireSettingsState extends State<TireSettings> {
                         selectedText:
                             AppTheme.customTextStyles['regular-24-highlight']!,
                         unselectedText: AppTheme.customTextStyles['medium-14']!,
-                        numberQuantity: 2,
                         isHorizontal: false,
                         displayedElements: 3,
                         elements: const [
@@ -170,7 +168,6 @@ class _TireSettingsState extends State<TireSettings> {
                     selectedText:
                         AppTheme.customTextStyles['regular-24-highlight']!,
                     unselectedText: AppTheme.customTextStyles['medium-14']!,
-                    numberQuantity: 6,
                     isHorizontal: false,
                     // initialNumber: 1,
                     displayedElements: 6,

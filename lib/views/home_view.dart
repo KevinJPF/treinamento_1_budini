@@ -76,7 +76,6 @@ class _HomeViewState extends State<HomeView> {
                       selectedText:
                           AppTheme.customTextStyles['regular-24-highlight']!,
                       unselectedText: AppTheme.customTextStyles['medium-14']!,
-                      numberQuantity: 9,
                       isHorizontal: true,
                       displayedElements: 5,
                       elements: const [
@@ -97,7 +96,6 @@ class _HomeViewState extends State<HomeView> {
                       selectedText:
                           AppTheme.customTextStyles['regular-24-highlight']!,
                       unselectedText: AppTheme.customTextStyles['medium-14']!,
-                      numberQuantity: 3,
                       isHorizontal: true,
                       displayedElements: 3,
                       elements: const [
@@ -112,7 +110,6 @@ class _HomeViewState extends State<HomeView> {
                       selectedText:
                           AppTheme.customTextStyles['regular-24-highlight']!,
                       unselectedText: AppTheme.customTextStyles['medium-14']!,
-                      numberQuantity: 4,
                       isHorizontal: true,
                       displayedElements: 4,
                       elements: const [
@@ -131,7 +128,6 @@ class _HomeViewState extends State<HomeView> {
                       selectedText:
                           AppTheme.customTextStyles['regular-24-highlight']!,
                       unselectedText: AppTheme.customTextStyles['medium-14']!,
-                      numberQuantity: 4,
                       isHorizontal: false,
                       displayedElements: 4,
                       elements: const [

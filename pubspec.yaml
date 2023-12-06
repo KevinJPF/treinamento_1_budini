@@ -40,6 +40,9 @@ dependencies:
   auto_size_text: ^3.0.0
   flutter_svg: ^0.22.0
   flutter_screenutil: ^5.8.4
+  http: ^0.13.3
+  xml: ^5.4.1
+  xml2json: ^5.3.2
   
 
 dev_dependencies:

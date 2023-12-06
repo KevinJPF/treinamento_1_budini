@@ -44,7 +44,7 @@ class CustomButton extends StatelessWidget {
               top: buttonMarginTop.h,
               bottom: buttonMarginBottom.h),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(buttonBorderRadius),
+            borderRadius: BorderRadius.circular(buttonBorderRadius.sp),
             boxShadow: [
               BoxShadow(
                 color: AppTheme.customColors['black-16']!,
@@ -59,7 +59,7 @@ class CustomButton extends StatelessWidget {
               padding: MaterialStateProperty.all(EdgeInsets.zero),
               side: MaterialStateProperty.all<BorderSide>(
                 BorderSide(
-                  color: buttonBorderColor!,
+                  color: buttonBorderColor,
                   width: buttonBorderWidth.w,
                 ),
               ),
