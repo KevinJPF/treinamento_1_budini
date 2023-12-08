@@ -7,7 +7,6 @@ import 'package:treinamento/widgets/custom_button.dart';
 import 'package:treinamento/widgets/header.dart';
 import 'package:http/http.dart' as http;
 import 'package:treinamento/widgets/number_list.dart';
-import 'package:xml2json/xml2json.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ApiJson extends StatefulWidget {
@@ -22,7 +21,6 @@ class _RegisterViewState extends State<ApiJson> {
   List<String> pneus = [];
   int index = 0;
 
-  final Xml2Json xml2Json = Xml2Json();
   var data;
 
   Future<Map<String, dynamic>> getdata() async {

@@ -20,22 +20,23 @@ class CustomIconButton extends StatelessWidget {
   final double buttonBottomRightRadius;
 
   const CustomIconButton(
-      {super.key, 
+      {super.key,
       required this.onPressed,
-      required this.buttonHeight, 
-      required this.buttonMarginTop, 
-      required this.buttonMarginBottom, 
-      required this.buttonMarginLeft, 
-      required this.buttonMarginRight, 
-      required this.buttonBackColor, 
-      required this.buttonBorderWidth, 
-      required this.buttonBorderColor, 
-      this.buttonIcon, 
-      required this.buttonTopLeftRadius, 
-      required this.buttonTopRightRadius, 
-      required this.buttonBottomLeftRadius, 
-      required this.buttonBottomRightRadius, required this.buttonIconColor, required this.buttonIconSize}
-    );
+      required this.buttonHeight,
+      required this.buttonMarginTop,
+      required this.buttonMarginBottom,
+      required this.buttonMarginLeft,
+      required this.buttonMarginRight,
+      required this.buttonBackColor,
+      required this.buttonBorderWidth,
+      required this.buttonBorderColor,
+      this.buttonIcon,
+      required this.buttonTopLeftRadius,
+      required this.buttonTopRightRadius,
+      required this.buttonBottomLeftRadius,
+      required this.buttonBottomRightRadius,
+      required this.buttonIconColor,
+      required this.buttonIconSize});
 
   @override
   Widget build(BuildContext context) {
@@ -44,14 +45,18 @@ class CustomIconButton extends StatelessWidget {
         Container(
           width: double.infinity,
           height: buttonHeight,
-          margin: EdgeInsets.only(left: buttonMarginLeft, right: buttonMarginRight, top: buttonMarginTop  , bottom: buttonMarginBottom),
-          decoration: BoxDecoration (
+          margin: EdgeInsets.only(
+              left: buttonMarginLeft,
+              right: buttonMarginRight,
+              top: buttonMarginTop,
+              bottom: buttonMarginBottom),
+          decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(buttonTopLeftRadius),
               topRight: Radius.circular(buttonTopRightRadius),
               bottomLeft: Radius.circular(buttonBottomLeftRadius),
               bottomRight: Radius.circular(buttonBottomRightRadius),
-              ),
+            ),
             boxShadow: [
               BoxShadow(
                 color: AppTheme.customColors['black-16']!,
@@ -76,15 +81,15 @@ class CustomIconButton extends StatelessWidget {
               ),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(buttonTopLeftRadius),
-                  topRight: Radius.circular(buttonTopRightRadius),
-                  bottomLeft: Radius.circular(buttonBottomLeftRadius),
-                  bottomRight: Radius.circular(buttonBottomRightRadius),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(buttonTopLeftRadius),
+                    topRight: Radius.circular(buttonTopRightRadius),
+                    bottomLeft: Radius.circular(buttonBottomLeftRadius),
+                    bottomRight: Radius.circular(buttonBottomRightRadius),
                   ),
                 ),
               ),
-            ), 
+            ),
             child: Icon(
               buttonIcon,
               color: buttonIconColor,

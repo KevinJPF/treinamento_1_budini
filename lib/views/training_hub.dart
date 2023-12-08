@@ -6,6 +6,7 @@ import 'package:treinamento/views/connect_database.dart';
 import 'package:treinamento/views/inspection_settings.dart';
 import 'package:treinamento/views/people_list.dart';
 import 'package:treinamento/views/settings_tires.dart';
+import 'package:treinamento/views/speech_to_text.dart';
 import 'package:treinamento/widgets/app_theme.dart';
 import 'package:treinamento/widgets/custom_button.dart';
 import 'package:treinamento/widgets/header.dart';
@@ -242,6 +243,45 @@ class _TrainingHubState extends State<TrainingHub> {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) => const ApiJson(),
+                                ),
+                              );
+                            },
+                            buttonHeight: 48,
+                            buttonTextStyle:
+                                AppTheme.customTextStyles['medium-18']!,
+                            buttonBackColor:
+                                AppTheme.customColors['principal-100']!,
+                            buttonBorderWidth: 0,
+                            buttonBorderColor:
+                                AppTheme.customColors['principal-100']!,
+                            buttonBorderRadius: 200,
+                            buttonMarginBottom: 24,
+                            buttonMarginTop: 16,
+                            buttonMarginLeft: 16,
+                            buttonMarginRight: 16,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Text(
+                            'Speech to Text',
+                            style: AppTheme.customTextStyles['medium-14']!,
+                          ),
+                          CustomButton(
+                            buttonText: 'Voice to Text',
+                            onPressed: () {
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (context) => const SpeechText(),
                                 ),
                               );
                             },
